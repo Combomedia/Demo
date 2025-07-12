@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Combomedia - Formulario de Registro</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Formulario Vendedores - Agua Pura</title>
     <style>
         * {
             margin: 0;
@@ -14,206 +13,277 @@
         }
         
         body {
-            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #1a2a6c);
+            color: #333;
             padding: 20px;
+            min-height: 100vh;
         }
         
         .container {
-            max-width: 800px;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.95);
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: rgba(255, 255, 255, 0.95);
             border-radius: 15px;
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
             overflow: hidden;
-            position: relative;
         }
         
         header {
-            background: #1a2a6c;
+            background: linear-gradient(to right, #1a2980, #26d0ce);
             color: white;
-            padding: 25px;
+            padding: 25px 40px;
             text-align: center;
             position: relative;
         }
         
         .logo {
+            position: absolute;
+            top: 15px;
+            left: 20px;
+            font-size: 24px;
+            font-weight: bold;
             display: flex;
             align-items: center;
-            justify-content: center;
-            gap: 15px;
-            margin-bottom: 15px;
         }
         
-        .logo i {
-            font-size: 2.5rem;
-            color: #fdbb2d;
+        .logo-icon {
+            margin-right: 10px;
+            font-size: 32px;
         }
         
-        .logo h1 {
+        h1 {
             font-size: 2.2rem;
-            letter-spacing: 1px;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
         
-        header p {
+        .subtitle {
             font-size: 1.1rem;
             opacity: 0.9;
-            margin-top: 10px;
         }
         
-        .form-container {
+        .content {
             padding: 30px;
         }
         
-        .form-row {
-            display: flex;
-            flex-wrap: wrap;
-            margin: 0 -10px;
+        .form-container {
+            background-color: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
         
-        .form-group {
-            flex: 1 0 300px;
-            padding: 10px;
-            margin-bottom: 20px;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-            color: #333;
-        }
-        
-        .form-control {
+        table {
             width: 100%;
-            padding: 14px;
-            border: 2px solid #ddd;
-            border-radius: 8px;
-            font-size: 16px;
-            transition: all 0.3s ease;
+            border-collapse: collapse;
+            margin-bottom: 25px;
         }
         
-        .form-control:focus {
-            border-color: #1a2a6c;
+        th {
+            background: linear-gradient(to right, #1a2980, #26d0ce);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-size: 1.1rem;
+        }
+        
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        
+        tr:hover {
+            background-color: #e9f7fe;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: #1a2980;
+        }
+        
+        input, select {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+        
+        input:focus, select:focus {
+            border-color: #26d0ce;
             outline: none;
-            box-shadow: 0 0 0 3px rgba(26, 42, 108, 0.2);
+            box-shadow: 0 0 0 3px rgba(38, 208, 206, 0.2);
         }
         
-        select.form-control {
-            appearance: none;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%231a2a6c' viewBox='0 0 16 16'%3E%3Cpath d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E");
-            background-repeat: no-repeat;
-            background-position: right 15px center;
-            background-size: 12px;
-            padding-right: 40px;
+        input[type="radio"] {
+            width: auto;
+            margin-right: 5px;
         }
         
-        .conditional-section {
-            display: none;
-            background: #f8f9fa;
-            border-radius: 8px;
-            padding: 20px;
-            margin-top: 15px;
-            border-left: 4px solid #1a2a6c;
-            animation: fadeIn 0.5s ease;
+        .radio-group {
+            display: flex;
+            gap: 15px;
+            margin-top: 5px;
         }
         
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+        .radio-group label {
+            display: flex;
+            align-items: center;
+            font-weight: normal;
+            cursor: pointer;
         }
         
-        .btn {
-            display: inline-block;
-            background: #1a2a6c;
+        .btn-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        button {
+            background: linear-gradient(to right, #1a2980, #26d0ce);
             color: white;
             border: none;
-            padding: 15px 30px;
-            font-size: 18px;
-            font-weight: 600;
-            border-radius: 8px;
+            padding: 14px 35px;
+            font-size: 1.1rem;
+            border-radius: 50px;
             cursor: pointer;
-            transition: all 0.3s ease;
-            width: 100%;
-            margin-top: 10px;
-            position: relative;
+            transition: all 0.3s;
+            font-weight: 600;
+            box-shadow: 0 4px 10px rgba(26, 41, 128, 0.3);
         }
         
-        .btn:hover {
-            background: #0d1a4a;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(26, 41, 128, 0.4);
         }
         
-        .btn.loading .spinner {
-            display: inline-block;
+        button:active {
+            transform: translateY(1px);
         }
         
-        .spinner {
-            display: none;
-            width: 20px;
-            height: 20px;
-            border: 3px solid rgba(255,255,255,0.3);
-            border-radius: 50%;
-            border-top-color: white;
-            animation: spin 1s ease-in-out infinite;
-            margin-right: 10px;
-            vertical-align: middle;
+        .instructions {
+            background-color: #e3f2fd;
+            border-left: 4px solid #1a2980;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
         }
         
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-        
-        .error {
-            color: #e74c3c;
-            font-size: 14px;
-            margin-top: 5px;
-            display: none;
-        }
-        
-        .form-control.error-border {
-            border-color: #e74c3c;
-        }
-        
-        .required::after {
-            content: " *";
-            color: #e74c3c;
-        }
-        
-        footer {
+        .footer {
             text-align: center;
             padding: 20px;
             color: #666;
-            font-size: 14px;
-            background: #f8f9fa;
+            font-size: 0.9rem;
             border-top: 1px solid #eee;
+            margin-top: 20px;
         }
         
-        .success-message {
-            background: #4CAF50;
-            color: white;
-            padding: 20px;
-            text-align: center;
-            border-radius: 8px;
-            margin-top: 20px;
+        .section-title {
+            font-size: 1.4rem;
+            color: #1a2980;
+            margin: 25px 0 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #26d0ce;
+        }
+        
+        .modal {
             display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-content {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .spinner {
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid #26d0ce;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .success-icon {
+            color: #2ecc71;
+            font-size: 50px;
+            margin-bottom: 20px;
+        }
+        
+        .error-icon {
+            color: #e74c3c;
+            font-size: 50px;
+            margin-bottom: 20px;
+        }
+        
+        .modal-btn {
+            margin-top: 20px;
+            background: #1a2980;
         }
         
         @media (max-width: 768px) {
-            .form-group {
-                flex: 1 0 100%;
+            .container {
+                margin: 10px;
             }
             
             header {
-                padding: 20px 15px;
+                padding: 20px;
             }
             
-            .form-container {
-                padding: 20px;
+            .logo {
+                position: static;
+                justify-content: center;
+                margin-bottom: 10px;
+            }
+            
+            .content {
+                padding: 15px;
+            }
+            
+            table, tbody, tr, td {
+                display: block;
+                width: 100%;
+            }
+            
+            tr {
+                margin-bottom: 20px;
+                border: 1px solid #ddd;
+                border-radius: 8px;
+                overflow: hidden;
+            }
+            
+            td {
+                border-bottom: none;
+            }
+            
+            th {
+                display: none;
             }
         }
     </style>
@@ -222,398 +292,369 @@
     <div class="container">
         <header>
             <div class="logo">
-                <i class="fas fa-broadcast-tower"></i>
-                <h1>COMBOMEDIA</h1>
+                <span class="logo-icon">💧</span>
+                AGUA PURA
             </div>
-            <p>Complete el formulario para registrarse en nuestro sistema</p>
+            <h1>Registro de Vendedores</h1>
+            <p class="subtitle">Complete todos los datos requeridos para el registro en el sistema</p>
         </header>
         
-        <div class="form-container">
-            <form id="combomediaForm">
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="cedula" class="required">Cédula</label>
-                        <input type="text" id="cedula" name="cedula" class="form-control" placeholder="Ingrese su cédula">
-                        <div class="error" id="cedulaError">Por favor ingrese una cédula válida</div>
-                    </div>
+        <div class="content">
+            <div class="instructions">
+                <h3>Instrucciones:</h3>
+                <p>Por favor complete todos los campos del formulario. Los campos marcados con asterisco (*) son obligatorios.</p>
+            </div>
+            
+            <div class="form-container">
+                <form id="formVendedor">
+                    <h2 class="section-title">Datos Personales</h2>
+                    <table>
+                        <tr>
+                            <td>
+                                <label for="nombre">Nombre *</label>
+                                <input type="text" id="nombre" required>
+                            </td>
+                            <td>
+                                <label for="apellido">Apellido *</label>
+                                <input type="text" id="apellido" required>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="cedula">Cédula *</label>
+                                <input type="text" id="cedula" placeholder="Ej: 12345678" required>
+                            </td>
+                            <td>
+                                <label for="telefono">Teléfono *</label>
+                                <input type="tel" id="telefono" placeholder="Ej: 04121234567" required>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="correo">Correo Electrónico *</label>
+                                <input type="email" id="correo" placeholder="Ej: nombre@ejemplo.com" required>
+                            </td>
+                            <td>
+                                <label for="fecha_nac">Fecha de Nacimiento *</label>
+                                <input type="date" id="fecha_nac" required>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <label for="fecha_ingreso">Fecha de Ingreso a la Empresa *</label>
+                                <input type="date" id="fecha_ingreso" required>
+                            </td>
+                        </tr>
+                    </table>
                     
-                    <div class="form-group">
-                        <label for="nombre" class="required">Nombre</label>
-                        <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Ingrese su nombre">
-                        <div class="error" id="nombreError">Por favor ingrese su nombre</div>
-                    </div>
-                </div>
-                
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="apellido" class="required">Apellido</label>
-                        <input type="text" id="apellido" name="apellido" class="form-control" placeholder="Ingrese su apellido">
-                        <div class="error" id="apellidoError">Por favor ingrese su apellido</div>
-                    </div>
+                    <h2 class="section-title">Datos de Habitación</h2>
+                    <table>
+                        <tr>
+                            <td>
+                                <label for="estado">Estado *</label>
+                                <input type="text" id="estado" required>
+                            </td>
+                            <td>
+                                <label for="municipio">Municipio *</label>
+                                <input type="text" id="municipio" required>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="parroquia">Parroquia *</label>
+                                <input type="text" id="parroquia" required>
+                            </td>
+                            <td>
+                                <label for="urb_sector">Urb/Sector *</label>
+                                <input type="text" id="urb_sector" required>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="av_calle">Av/Calle *</label>
+                                <input type="text" id="av_calle" required>
+                            </td>
+                            <td>
+                                <label for="nro_casa">Nro. Casa/Apto *</label>
+                                <input type="text" id="nro_casa" required>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <label for="anios_zona">Años en la zona *</label>
+                                <input type="number" id="anios_zona" min="0" required>
+                            </td>
+                        </tr>
+                    </table>
                     
-                    <div class="form-group">
-                        <label for="email" class="required">Email</label>
-                        <input type="email" id="email" name="email" class="form-control" placeholder="ejemplo@dominio.com">
-                        <div class="error" id="emailError">Por favor ingrese un email válido</div>
-                    </div>
-                </div>
-                
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="telefono" class="required">Teléfono</label>
-                        <input type="tel" id="telefono" name="telefono" class="form-control" placeholder="Ingrese su teléfono">
-                        <div class="error" id="telefonoError">Por favor ingrese un teléfono válido</div>
-                    </div>
+                    <h2 class="section-title">Datos del Vehículo</h2>
+                    <table>
+                        <tr>
+                            <td>
+                                <label for="modelo">Modelo *</label>
+                                <input type="text" id="modelo" required>
+                            </td>
+                            <td>
+                                <label for="marca">Marca *</label>
+                                <input type="text" id="marca" required>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="placa">Placa *</label>
+                                <input type="text" id="placa" placeholder="Ej: ABC-123" required>
+                            </td>
+                            <td>
+                                <label for="cilindrada">Cilindrada *</label>
+                                <input type="text" id="cilindrada" placeholder="Ej: 1600cc" required>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="serial_motor">Serial Motor *</label>
+                                <input type="text" id="serial_motor" required>
+                            </td>
+                            <td>
+                                <label for="serial_chasis">Serial Chasis *</label>
+                                <input type="text" id="serial_chasis" required>
+                            </td>
+                        </tr>
+                    </table>
                     
-                    <div class="form-group">
-                        <label for="nacimiento" class="required">Fecha de Nacimiento</label>
-                        <input type="date" id="nacimiento" name="nacimiento" class="form-control">
-                        <div class="error" id="nacimientoError">Por favor ingrese una fecha válida</div>
-                    </div>
-                </div>
-                
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="sexo" class="required">Sexo</label>
-                        <select id="sexo" name="sexo" class="form-control">
-                            <option value="">Seleccione su sexo</option>
-                            <option value="masculino">Masculino</option>
-                            <option value="femenino">Femenino</option>
-                            <option value="otro">Otro</option>
-                        </select>
-                        <div class="error" id="sexoError">Por favor seleccione su sexo</div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="fecha" class="required">Fecha de Envío</label>
-                        <input type="date" id="fecha" name="fecha" class="form-control" readonly>
-                    </div>
-                </div>
-                
-                <div class="form-group">
-                    <label for="interes" class="required">Interés</label>
-                    <select id="interes" name="interes" class="form-control">
-                        <option value="">Seleccione su interés</option>
-                        <option value="comuna">Comuna</option>
-                        <option value="fundacion">Fundación</option>
-                    </select>
-                    <div class="error" id="interesError">Por favor seleccione un interés</div>
-                </div>
-                
-                <!-- Sección condicional para Comuna -->
-                <div id="comunaSection" class="conditional-section">
-                    <div class="form-group">
-                        <label for="comuna" class="required">Comuna</label>
-                        <select id="comuna" name="comuna" class="form-control">
-                            <option value="">Seleccione una comuna</option>
-                            <option value="parque-central">Parque Central</option>
-                        </select>
-                        <div class="error" id="comunaError">Por favor seleccione una comuna</div>
-                    </div>
-                    
-                    <div id="residenciaSection" class="conditional-section">
-                        <div class="form-group">
-                            <label for="residencia" class="required">Residencia</label>
-                            <select id="residencia" name="residencia" class="form-control">
-                                <option value="">Seleccione una residencia</option>
-                                <option value="tejar">Tejar</option>
-                                <option value="san-martin">San Martin</option>
-                                <option value="mohedano">Mohedano</option>
-                                <option value="anauco">Anauco</option>
-                                <option value="tajama">Tajama</option>
-                                <option value="catuche">Catuche</option>
-                                <option value="caroata">Caroata</option>
-                                <option value="tacagua">Tacagua</option>
-                            </select>
-                            <div class="error" id="residenciaError">Por favor seleccione una residencia</div>
-                        </div>
-                        
-                        <div id="aptoSection" class="conditional-section">
-                            <div class="form-group">
-                                <label for="apto" class="required">Apto</label>
-                                <select id="apto" name="apto" class="form-control">
-                                    <option value="">Seleccione un apartamento</option>
-                                    <option value="01A">01A</option>
-                                    <option value="01B">01B</option>
-                                    <option value="01C">01C</option>
-                                    <option value="01D">01D</option>
-                                    <option value="01E">01E</option>
-                                    <option value="01F">01F</option>
-                                    <option value="01G">01G</option>
-                                    <option value="01H">01H</option>
-                                    <option value="01J">01J</option>
-                                    <option value="01K">01K</option>
+                    <h2 class="section-title">Otros Datos</h2>
+                    <table>
+                        <tr>
+                            <td>
+                                <label for="sucursal">Sucursal *</label>
+                                <select id="sucursal" required>
+                                    <option value="">Seleccione una sucursal</option>
+                                    <option value="Castillejo">Castillejo</option>
+                                    <option value="Araira">Araira</option>
+                                    <option value="Guatire">Guatire</option>
+                                    <option value="Buenaventura">Buenaventura</option>
+                                    <option value="Guarenas">Guarenas</option>
                                 </select>
-                                <div class="error" id="aptoError">Por favor seleccione un apartamento</div>
-                            </div>
-                        </div>
+                            </td>
+                            <td>
+                                <label>Conocimiento de la zona *</label>
+                                <div class="radio-group">
+                                    <label><input type="radio" name="conocimiento" value="bajo" required> Bajo</label>
+                                    <label><input type="radio" name="conocimiento" value="medio"> Medio</label>
+                                    <label><input type="radio" name="conocimiento" value="alto"> Alto</label>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                    
+                    <div class="btn-container">
+                        <button type="submit">Enviar Datos</button>
                     </div>
-                </div>
-                
-                <!-- Sección condicional para Fundación -->
-                <div id="fundacionSection" class="conditional-section">
-                    <div class="form-group">
-                        <label for="fundacion" class="required">Fundación</label>
-                        <select id="fundacion" name="fundacion" class="form-control">
-                            <option value="">Seleccione una fundación</option>
-                            <option value="mision-ribas">Misión Ribas</option>
-                            <option value="causa-campesina">Fundación Causa Campesina</option>
-                            <option value="observatorio">Observatorio Popular de medios</option>
-                        </select>
-                        <div class="error" id="fundacionError">Por favor seleccione una fundación</div>
-                    </div>
-                </div>
-                
-                <button type="submit" class="btn" id="submitBtn">
-                    <span class="spinner"></span>
-                    <i class="fas fa-paper-plane"></i> Enviar Formulario
-                </button>
-                
-                <div class="success-message" id="successMessage">
-                    <i class="fas fa-check-circle"></i> ¡Formulario enviado con éxito! Los datos han sido guardados.
-                </div>
-            </form>
+                </form>
+            </div>
+            
+            <div class="footer">
+                <p>Sistema de Registro de Vendedores &copy; 2023 - Empresa Agua Pura</p>
+                <p>Los datos se guardan automáticamente en nuestra base de datos</p>
+            </div>
         </div>
-        
-        <footer>
-            <p>&copy; 2023 Combomedia. Todos los derechos reservados.</p>
-        </footer>
+    </div>
+    
+    <!-- Modal para mostrar estado del envío -->
+    <div class="modal" id="statusModal">
+        <div class="modal-content">
+            <div id="spinner" class="spinner"></div>
+            <div id="successIcon" class="success-icon" style="display: none;">✓</div>
+            <div id="errorIcon" class="error-icon" style="display: none;">✗</div>
+            <h3 id="modalTitle">Enviando datos...</h3>
+            <p id="modalMessage">Por favor espere mientras procesamos su información</p>
+            <button class="modal-btn" id="modalButton" style="display: none;">Aceptar</button>
+        </div>
     </div>
 
     <script>
+        // Función para mostrar modal
+        function showModal(title, message, isSuccess, showButton) {
+            const modal = document.getElementById('statusModal');
+            const spinner = document.getElementById('spinner');
+            const successIcon = document.getElementById('successIcon');
+            const errorIcon = document.getElementById('errorIcon');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalMessage = document.getElementById('modalMessage');
+            const modalButton = document.getElementById('modalButton');
+            
+            modalTitle.textContent = title;
+            modalMessage.textContent = message;
+            
+            if (isSuccess) {
+                spinner.style.display = 'none';
+                successIcon.style.display = 'block';
+                modalButton.style.display = 'block';
+            } else if (isSuccess === false) {
+                spinner.style.display = 'none';
+                errorIcon.style.display = 'block';
+                modalButton.style.display = 'block';
+            } else {
+                spinner.style.display = 'block';
+                successIcon.style.display = 'none';
+                errorIcon.style.display = 'none';
+                modalButton.style.display = 'none';
+            }
+            
+            modal.style.display = 'flex';
+            
+            if (showButton) {
+                modalButton.style.display = 'block';
+            }
+        }
+        
+        // Función para ocultar modal
+        function hideModal() {
+            document.getElementById('statusModal').style.display = 'none';
+        }
+        
+        // Función para validar formulario
+        function validarFormulario() {
+            // Validación de cédula (8-10 dígitos)
+            const cedula = document.getElementById('cedula').value;
+            if (!/^\d{8,10}$/.test(cedula)) {
+                showModal('Error', 'Cédula inválida: debe tener entre 8 y 10 dígitos numéricos', false, true);
+                return false;
+            }
+
+            // Validación de teléfono (10-11 dígitos)
+            const telefono = document.getElementById('telefono').value;
+            if (!/^\d{10,11}$/.test(telefono)) {
+                showModal('Error', 'Teléfono inválido: debe tener 10 o 11 dígitos numéricos', false, true);
+                return false;
+            }
+
+            // Validación de correo
+            const correo = document.getElementById('correo').value;
+            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(correo)) {
+                showModal('Error', 'Correo electrónico inválido: por favor ingrese un correo válido', false, true);
+                return false;
+            }
+
+            // Validación de fecha de nacimiento
+            const fechaNac = new Date(document.getElementById('fecha_nac').value);
+            const hoy = new Date();
+            if (fechaNac >= hoy) {
+                showModal('Error', 'Fecha de nacimiento inválida: debe ser una fecha anterior al día de hoy', false, true);
+                return false;
+            }
+
+            // Validación de fecha de ingreso
+            const fechaIngreso = new Date(document.getElementById('fecha_ingreso').value);
+            if (fechaIngreso > hoy) {
+                showModal('Error', 'Fecha de ingreso inválida: no puede ser posterior al día de hoy', false, true);
+                return false;
+            }
+            
+            // Validación de años en la zona
+            const aniosZona = document.getElementById('anios_zona').value;
+            if (aniosZona < 0) {
+                showModal('Error', 'Años en la zona inválidos: no puede ser un valor negativo', false, true);
+                return false;
+            }
+
+            // Validación de placa (formato ABC-123)
+            const placa = document.getElementById('placa').value;
+            if (!/^[A-Z]{3}-\d{3}$/.test(placa)) {
+                showModal('Error', 'Placa inválida: debe tener el formato ABC-123 (3 letras, guión y 3 números)', false, true);
+                return false;
+            }
+
+            // Validación de conocimiento de la zona
+            const conocimiento = document.querySelector('input[name="conocimiento"]:checked');
+            if (!conocimiento) {
+                showModal('Error', 'Por favor seleccione el nivel de conocimiento de la zona', false, true);
+                return false;
+            }
+
+            return true;
+        }
+        
+        // Función para enviar datos a Google Sheets
+        function enviarDatosGoogleSheets() {
+            // URL del script de Google Apps (debes reemplazarlo con tu propio script)
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbwyn2STV56LzPBREdCV5BzibVNOUvNysDiDLuBl7zqX23UUYxNzmq8U9sm-HlCTQVeZ/exec';
+            
+            // Obtener valores del formulario
+            const formData = new FormData();
+            formData.append('nombre', document.getElementById('nombre').value);
+            formData.append('apellido', document.getElementById('apellido').value);
+            formData.append('cedula', document.getElementById('cedula').value);
+            formData.append('telefono', document.getElementById('telefono').value);
+            formData.append('correo', document.getElementById('correo').value);
+            formData.append('fecha_nac', document.getElementById('fecha_nac').value);
+            formData.append('fecha_ingreso', document.getElementById('fecha_ingreso').value);
+            formData.append('estado', document.getElementById('estado').value);
+            formData.append('municipio', document.getElementById('municipio').value);
+            formData.append('parroquia', document.getElementById('parroquia').value);
+            formData.append('urb_sector', document.getElementById('urb_sector').value);
+            formData.append('av_calle', document.getElementById('av_calle').value);
+            formData.append('nro_casa', document.getElementById('nro_casa').value);
+            formData.append('anios_zona', document.getElementById('anios_zona').value);
+            formData.append('modelo', document.getElementById('modelo').value);
+            formData.append('marca', document.getElementById('marca').value);
+            formData.append('placa', document.getElementById('placa').value);
+            formData.append('cilindrada', document.getElementById('cilindrada').value);
+            formData.append('serial_motor', document.getElementById('serial_motor').value);
+            formData.append('serial_chasis', document.getElementById('serial_chasis').value);
+            formData.append('sucursal', document.getElementById('sucursal').value);
+            formData.append('conocimiento', document.querySelector('input[name="conocimiento"]:checked').value);
+            
+            // Enviar datos mediante fetch
+            fetch(scriptURL, { method: 'POST', body: formData })
+            .then(response => {
+                if (response.ok) {
+                    return response.json();
+                }
+                throw new Error('Error en la respuesta del servidor');
+            })
+            .then(data => {
+                if (data.result === 'success') {
+                    showModal('Éxito', 'Datos enviados correctamente a Google Sheets', true, true);
+                    document.getElementById('formVendedor').reset();
+                    
+                    // Restablecer fechas después de enviar
+                    const hoy = new Date().toISOString().split('T')[0];
+                    document.getElementById('fecha_ingreso').value = hoy;
+                    
+                    const fechaNac = new Date();
+                    fechaNac.setFullYear(fechaNac.getFullYear() - 25);
+                    document.getElementById('fecha_nac').value = fechaNac.toISOString().split('T')[0];
+                } else {
+                    showModal('Error', 'Hubo un problema al guardar los datos', false, true);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                showModal('Error', 'Hubo un problema al enviar los datos: ' + error.message, false, true);
+            });
+        }
+        
+        // Manejador de envío de formulario
+        document.getElementById('formVendedor').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            if (validarFormulario()) {
+                showModal('Enviando', 'Por favor espere mientras enviamos sus datos', null, false);
+                setTimeout(enviarDatosGoogleSheets, 1500);
+            }
+        });
+        
+        // Configurar fechas por defecto al cargar la página
         document.addEventListener('DOMContentLoaded', function() {
-            // Establecer fecha actual en el campo de fecha
-            const today = new Date();
-            const formattedDate = today.toISOString().split('T')[0];
-            document.getElementById('fecha').value = formattedDate;
+            const hoy = new Date().toISOString().split('T')[0];
+            document.getElementById('fecha_ingreso').value = hoy;
             
-            // Referencias a elementos del formulario
-            const interesSelect = document.getElementById('interes');
-            const comunaSection = document.getElementById('comunaSection');
-            const fundacionSection = document.getElementById('fundacionSection');
-            const comunaSelect = document.getElementById('comuna');
-            const residenciaSection = document.getElementById('residenciaSection');
-            const aptoSection = document.getElementById('aptoSection');
-            const form = document.getElementById('combomediaForm');
-            const submitBtn = document.getElementById('submitBtn');
-            const successMessage = document.getElementById('successMessage');
+            const fechaNac = new Date();
+            fechaNac.setFullYear(fechaNac.getFullYear() - 25);
+            document.getElementById('fecha_nac').value = fechaNac.toISOString().split('T')[0];
             
-            // Manejar cambios en el campo de interés
-            interesSelect.addEventListener('change', function() {
-                if (interesSelect.value === 'comuna') {
-                    comunaSection.style.display = 'block';
-                    fundacionSection.style.display = 'none';
-                    
-                    // Resetear campos de fundación
-                    document.getElementById('fundacion').selectedIndex = 0;
-                } else if (interesSelect.value === 'fundacion') {
-                    fundacionSection.style.display = 'block';
-                    comunaSection.style.display = 'none';
-                    
-                    // Resetear campos de comuna
-                    comunaSelect.selectedIndex = 0;
-                    document.getElementById('residencia').selectedIndex = 0;
-                    document.getElementById('apto').selectedIndex = 0;
-                    residenciaSection.style.display = 'none';
-                    aptoSection.style.display = 'none';
-                } else {
-                    comunaSection.style.display = 'none';
-                    fundacionSection.style.display = 'none';
-                }
-            });
-            
-            // Manejar cambios en el campo de comuna
-            comunaSelect.addEventListener('change', function() {
-                if (comunaSelect.value === 'parque-central') {
-                    residenciaSection.style.display = 'block';
-                } else {
-                    residenciaSection.style.display = 'none';
-                    aptoSection.style.display = 'none';
-                    document.getElementById('residencia').selectedIndex = 0;
-                    document.getElementById('apto').selectedIndex = 0;
-                }
-            });
-            
-            // Manejar cambios en el campo de residencia
-            document.getElementById('residencia').addEventListener('change', function() {
-                if (this.value) {
-                    aptoSection.style.display = 'block';
-                } else {
-                    aptoSection.style.display = 'none';
-                    document.getElementById('apto').selectedIndex = 0;
-                }
-            });
-            
-            // Validación del formulario
-            form.addEventListener('submit', function(e) {
-                e.preventDefault();
-                let isValid = true;
-                
-                // Validar campos básicos
-                const requiredFields = [
-                    'cedula', 'nombre', 'apellido', 'email', 
-                    'telefono', 'nacimiento', 'sexo', 'interes'
-                ];
-                
-                requiredFields.forEach(field => {
-                    const element = document.getElementById(field);
-                    const errorElement = document.getElementById(field + 'Error');
-                    
-                    if (!element.value) {
-                        isValid = false;
-                        element.classList.add('error-border');
-                        errorElement.style.display = 'block';
-                    } else {
-                        element.classList.remove('error-border');
-                        errorElement.style.display = 'none';
-                    }
-                });
-                
-                // Validar email
-                const email = document.getElementById('email');
-                const emailError = document.getElementById('emailError');
-                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                
-                if (!emailRegex.test(email.value)) {
-                    isValid = false;
-                    email.classList.add('error-border');
-                    emailError.style.display = 'block';
-                } else {
-                    email.classList.remove('error-border');
-                    emailError.style.display = 'none';
-                }
-                
-                // Validar teléfono (al menos 7 dígitos)
-                const telefono = document.getElementById('telefono');
-                const telefonoError = document.getElementById('telefonoError');
-                
-                if (!/^\d{7,}$/.test(telefono.value.replace(/\D/g, ''))) {
-                    isValid = false;
-                    telefono.classList.add('error-border');
-                    telefonoError.style.display = 'block';
-                } else {
-                    telefono.classList.remove('error-border');
-                    telefonoError.style.display = 'none';
-                }
-                
-                // Validar campos condicionales
-                if (interesSelect.value === 'comuna') {
-                    const comuna = document.getElementById('comuna');
-                    const comunaError = document.getElementById('comunaError');
-                    
-                    if (!comuna.value) {
-                        isValid = false;
-                        comuna.classList.add('error-border');
-                        comunaError.style.display = 'block';
-                    } else {
-                        comuna.classList.remove('error-border');
-                        comunaError.style.display = 'none';
-                    }
-                    
-                    // Validar residencia si comuna está seleccionada
-                    if (comuna.value === 'parque-central') {
-                        const residencia = document.getElementById('residencia');
-                        const residenciaError = document.getElementById('residenciaError');
-                        
-                        if (!residencia.value) {
-                            isValid = false;
-                            residencia.classList.add('error-border');
-                            residenciaError.style.display = 'block';
-                        } else {
-                            residencia.classList.remove('error-border');
-                            residenciaError.style.display = 'none';
-                        }
-                        
-                        // Validar apto si residencia está seleccionada
-                        if (residencia.value) {
-                            const apto = document.getElementById('apto');
-                            const aptoError = document.getElementById('aptoError');
-                            
-                            if (!apto.value) {
-                                isValid = false;
-                                apto.classList.add('error-border');
-                                aptoError.style.display = 'block';
-                            } else {
-                                apto.classList.remove('error-border');
-                                aptoError.style.display = 'none';
-                            }
-                        }
-                    }
-                } else if (interesSelect.value === 'fundacion') {
-                    const fundacion = document.getElementById('fundacion');
-                    const fundacionError = document.getElementById('fundacionError');
-                    
-                    if (!fundacion.value) {
-                        isValid = false;
-                        fundacion.classList.add('error-border');
-                        fundacionError.style.display = 'block';
-                    } else {
-                        fundacion.classList.remove('error-border');
-                        fundacionError.style.display = 'none';
-                    }
-                }
-                
-                // Si el formulario es válido, enviar datos a Google Sheets
-                if (isValid) {
-                    // Mostrar spinner de carga
-                    submitBtn.classList.add('loading');
-                    
-                    // Recolectar datos del formulario
-                    const formData = new FormData(form);
-                    
-                    // URL de Google Apps Script (debes reemplazarlo con tu propio script)
-                    const scriptURL = 'https://script.google.com/macros/s/AKfycbwyn2STV56LzPBREdCV5BzibVNOUvNysDiDLuBl7zqX23UUYxNzmq8U9sm-HlCTQVeZ/exec';
-                    
-                    // Enviar datos a Google Sheets
-                    fetch(scriptURL, {
-                        method: 'POST',
-                        body: formData
-                    })
-                    .then(response => {
-                        if (response.ok) {
-                            // Mostrar mensaje de éxito
-                            successMessage.style.display = 'block';
-                            
-                            // Ocultar mensaje después de 5 segundos
-                            setTimeout(() => {
-                                successMessage.style.display = 'none';
-                            }, 5000);
-                            
-                            // Resetear formulario
-                            form.reset();
-                            
-                            // Restablecer secciones condicionales
-                            comunaSection.style.display = 'none';
-                            fundacionSection.style.display = 'none';
-                            residenciaSection.style.display = 'none';
-                            aptoSection.style.display = 'none';
-                            
-                            // Restablecer fecha actual
-                            document.getElementById('fecha').value = formattedDate;
-                        } else {
-                            throw new Error('Error en la respuesta del servidor');
-                        }
-                    })
-                    .catch(error => {
-                        console.error('Error:', error);
-                        alert('Ocurrió un error al enviar el formulario. Por favor inténtelo de nuevo.');
-                    })
-                    .finally(() => {
-                        // Ocultar spinner
-                        submitBtn.classList.remove('loading');
-                    });
-                }
-            });
-            
-            // Manejar formato de cédula (solo números)
-            document.getElementById('cedula').addEventListener('input', function() {
-                this.value = this.value.replace(/\D/g, '');
-            });
-            
-            // Manejar formato de teléfono (solo números)
-            document.getElementById('telefono').addEventListener('input', function() {
-                this.value = this.value.replace(/\D/g, '');
-            });
+            // Configurar botón de modal
+            document.getElementById('modalButton').addEventListener('click', hideModal);
         });
     </script>
 </body>
